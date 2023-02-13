@@ -1,0 +1,28 @@
+sh build.sh -t symp_20221218
+
+docker images
+
+docker login(如果未登录的话)
+june666666
+yao66666
+
+docker tag e420036b2f5f june666666/symp_env:symp_20230103
+
+docker push june666666/symp_env:symp_20230103
+
+
+sh build.sh -t symp_20230103
+
+docker images
+
+docker tag 0f8ee016f437 june666666/symp_code:symp_20230103
+
+docker push june666666/symp_code:symp_20230103
+
+# 生产环境
+docker pull june666666/symp_code:symp_20230103
+docker run -itd --name  symp_code -p 8000:8088 june666666/symp_code:symp_20230103
+sudo docker ps -a
+
+容器设置异常退出自动重启
+docker update --restart=on-failure 3b6fda937cf7
