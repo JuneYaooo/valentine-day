@@ -29,6 +29,6 @@ RUN apt-get --allow-releaseinfo-change update && apt-get update -y \
  && apt-get install -y build-essential libgl1-mesa-glx \ 
  && rm -rf /var/lib/apt/lists/*
 
-COPY symp.yaml ./
+COPY valentine.yaml ./
 
-RUN  conda env create -f ./symp.yaml && conda clean --tarballs -y
+RUN  conda env create -f ./valentine.yaml && conda clean --tarballs -y

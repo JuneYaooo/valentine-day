@@ -1,12 +1,11 @@
-FROM june666666/symp_env:symp_20221218
+FROM june666666/valentine_env:valentine_20230213
 
 WORKDIR /code
 COPY ./tmp/code/*.py /code/
-COPY ./tmp/code/convid_pred /code/convid_pred
-COPY ./tmp/code/symp_pred /code/symp_pred
+COPY ./tmp/code/*.mp4 /code/
 
 RUN apt-get update && rm -rf /var/lib/apt/lists/*
-EXPOSE 8088
+EXPOSE 8501
 
-CMD ["bash", "-c", "source activate sympl && python /code/manage.py runserver 0.0.0.0:8088"]
+CMD ["bash", "-c", "source activate valentine && streamlit run run.py"]
 

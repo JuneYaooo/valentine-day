@@ -1,4 +1,4 @@
-sh build.sh -t symp_20221218
+sh build.sh -t valentine_20230213
 
 docker images
 
@@ -6,23 +6,27 @@ docker login(如果未登录的话)
 june666666
 yao66666
 
-docker tag e420036b2f5f june666666/symp_env:symp_20230103
+docker tag b6ad0df3b5c3 june666666/valentine_env:valentine_20230213
 
-docker push june666666/symp_env:symp_20230103
+docker push june666666/valentine_env:valentine_20230213
 
 
-sh build.sh -t symp_20230103
+sh build.sh -t valentine_20230214
 
 docker images
 
-docker tag 0f8ee016f437 june666666/symp_code:symp_20230103
+docker tag fea024267737 june666666/valentine_code:valentine_20230214
 
-docker push june666666/symp_code:symp_20230103
+docker push june666666/valentine_code:valentine_20230214
 
 # 生产环境
-docker pull june666666/symp_code:symp_20230103
-docker run -itd --name  symp_code -p 8000:8088 june666666/symp_code:symp_20230103
+docker pull june666666/valentine_code:valentine_20230214
+docker run -itd --name  valentine_code -p 8502:8501 june666666/valentine_code:valentine_20230214
 sudo docker ps -a
 
 容器设置异常退出自动重启
-docker update --restart=on-failure 3b6fda937cf7
+docker update --restart=on-failure d85b35337138
+
+
+查看日志
+docker logs --since 30m d85b35337138

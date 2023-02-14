@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE=symp_env
+IMAGE=valentine_env
 
 while getopts "t:h" o; do
     case "${o}" in
